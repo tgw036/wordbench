@@ -1,2 +1,1 @@
-## WordBench Kumamoto
-WordBench 熊本にて発表したスライドのサンプルコード集です
+WordBench Kumamoto にて発表したスライドのサンプルコード集です
