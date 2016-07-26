@@ -69,7 +69,7 @@ class KumademoPanoramaViewer
 		    // 作成した javascript
 			wp_enqueue_script(
 				'mediauploader',
-				plugin_dir_url( __FILE__ ) . '/mediauploader.js',
+				plugin_dir_url( __FILE__ ) . '/upload.js',
 				array( 'jquery' ),
 				false,
 				true
@@ -120,8 +120,9 @@ class KumademoPanoramaViewer
 		// 引数があれば変数に代入する（なければデフォルト値）
 		extract(shortcode_atts(array(
 			'id' => 0,
-			'src' => plugins_url( 'panorama.jpg', __FILE__ ),
-			'rotation' => '0 -130 0',
+			'src' => 'panorama.jpg',
+			'width' => 800,
+			'height' => 400,
 		), $atts));
 
 		// メディアIDの指定がなければ src から取得を試みる
@@ -133,7 +134,8 @@ class KumademoPanoramaViewer
 		}
 
 		// ショートコードの展開
-		echo '<a-scene><a-sky src="' . $src . '" rotation="0 -130 0"></a-sky></a-scene>' . "\n";
+		$path = plugins_url('/', __FILE__);
+		echo '<iframe src="' . $path . '/aframe.php?path=' . $path . '&src=' . $src . '" width="' . $width . '" height="' . $height . '"></iframe>' . "\n";
 	}
 }
 
